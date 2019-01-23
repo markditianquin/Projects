@@ -6,7 +6,6 @@ import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { catchError, map, tap } from 'rxjs/operators';
-import { type } from 'os';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
