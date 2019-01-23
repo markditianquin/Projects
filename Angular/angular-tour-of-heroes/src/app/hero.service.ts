@@ -6,6 +6,7 @@ import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { catchError, map, tap } from 'rxjs/operators';
+import { type } from 'os';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -30,6 +31,13 @@ export class HeroService {
       );
   }
 
+  addHero (hero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
+      tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
+      catchError(this.handleError<Hero>('addHero'))
+    );
+  }
+
   /** GET hero by id. Will 404 if id not found */
   getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
@@ -45,6 +53,16 @@ export class HeroService {
         tap(_ => this.log(`update hero id=${hero.id}`)),
         catchError( this.handleError<any>('updateHero'))
       )
+  }
+
+  deleteHero(hero: Hero | number): Observable<Hero> {
+    const id = typeof hero === 'number' ? hero : hero.id;
+    const url = `${this.heroesUrl}/${id}`;
+
+    return this.http.delete<Hero>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<Hero>('deletedHero'))
+    );
   }
 
   private log(message: string) {
