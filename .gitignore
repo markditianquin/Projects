@@ -35,3 +35,11 @@ share/python-wheels/
 *.egg
 MANIFEST
 */projenv/share/python-wheels/
+
+#Django
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
