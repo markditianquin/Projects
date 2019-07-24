@@ -34,3 +34,4 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+Flask/projenv/share/python-wheels/
