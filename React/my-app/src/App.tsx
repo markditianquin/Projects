@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Counter } from './components/compForTesting';
+import { NavBar } from './components/NavBar';
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,9 @@ const App: React.FC = () => {
           Learn React
         </a>
       </header>
+      <div>
+        <NavBar></NavBar>
+      </div>
     </div>
   );
 }
