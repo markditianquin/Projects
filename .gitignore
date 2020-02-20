@@ -43,3 +43,6 @@ MANIFEST
 __pycache__
 db.sqlite3
 media
+
+#VSCode
+*.vscode
